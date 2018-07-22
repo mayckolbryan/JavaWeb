@@ -27,7 +27,16 @@ public class ServletError extends GenericServlet {
 	 */
 	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("errores del servletError.");
+		//response.getWriter().append("errores del servletError.");
+		
+		String codigoError = request.getParameter("codigoError");
+		if (codigoError.equals("104")) {
+			response.setContentType("text/html");
+			response.getWriter().println("Se deben ingresar todos los datos.");;
+		}
+		else {
+			request.getRequestDispatcher("./index.html").forward(request, response);
+		}
 	}
 
 }
