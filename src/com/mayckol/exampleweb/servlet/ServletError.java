@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Servlet implementation class ServletError
@@ -31,8 +32,12 @@ public class ServletError extends GenericServlet {
 		
 		String codigoError = request.getParameter("codigoError");
 		if (codigoError.equals("104")) {
+			HttpServletRequest requestHttp = (HttpServletRequest)request;
+			String empresa = requestHttp.getSession().getAttribute("empresa") + "";
+			String baseUrl = getServletContext().getAttribute("baseUrl") + "";
 			response.setContentType("text/html");
-			response.getWriter().println("Se deben ingresar todos los datos.");;
+			response.getWriter().println("Se deben ingresar todos los datos para la empresa: " + empresa + "<br>");
+			response.getWriter().println("Contactese con " + baseUrl);
 		}
 		else {
 			request.getRequestDispatcher("./index.html").forward(request, response);

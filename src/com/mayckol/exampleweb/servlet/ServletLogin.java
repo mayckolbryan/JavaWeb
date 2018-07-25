@@ -8,11 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ServletLogin
  */
-@WebServlet(description = "Clase para administrar Login", urlPatterns = { "/abc123" })
+@WebServlet(description = "Clase para administrar Login", urlPatterns = { "/servletLogin" })
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -43,10 +44,18 @@ public class ServletLogin extends HttpServlet {
 		//(1)Establecemos el tipo de respuesta
 		response.setContentType("text/html");
 		
+		//Setearemos un paramtro de session
+		HttpSession sesion = request.getSession();
+		sesion.setAttribute("empresa", "INDRA");
+		
+		//Setearemos un paramtro de aplicacion
+		getServletContext().setAttribute("baseUrl", "www.helloWorld.com");
+		
 		//Recuperar los valores
 		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 		
-		if (!username.equals("")) {
+		if (!username.equals("") && !password.equals("")) {
 			
 			//(2)Recuperar el escritor
 			PrintWriter escritor = response.getWriter();
@@ -58,9 +67,16 @@ public class ServletLogin extends HttpServlet {
 			//(4)Cerrar el escritor
 			escritor.close();			
 		}
-		else {
+		else if(username.equals("notfound")){
 			response.sendRedirect("servletError?codigoError=104");
 		}
+		else {
+			response.sendRedirect("servletError?codigoError=105");
+		}
+		
+		//Cerrar Sesion
+		//sesion.removeAttribute("empresa");	//Destruye una variable de la sesion
+		//sesion.invalidate();	//Destruye todas las variables de la sesion
 	}
 
 }
