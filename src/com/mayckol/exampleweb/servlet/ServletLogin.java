@@ -65,7 +65,9 @@ public class ServletLogin extends HttpServlet {
 			escritor.println("<label>Usuario: </label>" + username);
 			
 			//(4)Cerrar el escritor
-			escritor.close();			
+			escritor.close();
+			
+			sesion.setAttribute("usuario", username);
 		}
 		else if(username.equals("notfound")){
 			response.sendRedirect("servletError?codigoError=104");
