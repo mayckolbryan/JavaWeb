@@ -5,27 +5,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Administración Tipo Producto</title>
+<title>Administración Producto</title>
 </head>
 <body>
 	<f:view>
 		<h:form>
 			<h:panelGrid border="1" columns="3">
 				<h:commandButton value="Nuevo"></h:commandButton>
-				<h:commandButton value="Guardar" action="#{tipoProductoBean.guardarTipoProducto}"></h:commandButton>
+				<h:commandButton value="Guardar" action="#{productoBean.guardarProducto}"></h:commandButton>
 				<h:commandButton value="Buscar"></h:commandButton>
 			</h:panelGrid>
 			<h:panelGrid border="1" columns="2">
 				<f:facet name="header">
-					<h:outputLabel value="Administracion Tipo Producto"></h:outputLabel>
-				</f:facet>
+					<h:outputLabel value="Administracion Producto"></h:outputLabel>
+				</f:facet>				
 				<h:outputText value="Nombre: "></h:outputText>
-				<h:inputText id="txtNomCatalogo" value="#{tipoProductoBean.nombreTipoProducto}"/>
+				<h:selectOneMenu>
+					<f:selectItem itemLabel="Viveres" itemValue="1"/>
+					<f:selectItem itemLabel="Electrodomésticos" itemValue="2"/>
+					<f:selectItems itemValue="#{productoBean}"/>
+				</h:selectOneMenu>
+				<h:outputText value="Nombre: "></h:outputText>
+				<h:inputText id="txtNomCatalogo" value="#{productoBean.nombreProducto}"/>
 				<h:outputText value="Description: "></h:outputText>
-				<h:inputTextarea id="txtDescCatalogo" value="#{tipoProductoBean.descripcionTipoProducto}"/>
+				<h:inputTextarea id="txtDescCatalogo" value="#{productoBean.descripcionProducto}"/>
 			</h:panelGrid>
 			<br>
-			<h:dataTable id="dtblTipoProducto" border="1" value="#{tipoProductoBean.listaTipoProductos}" var="tipoProducto">
+			<h:dataTable id="dtblTipoProducto" border="1" value="#{productoBean.listaProductos}" var="producto">
 				<f:facet name="header">
 					<h:outputLabel value="Lista de Productos"></h:outputLabel>
 				</f:facet>
@@ -33,19 +39,19 @@
 					<f:facet name="header">
 						<h:outputLabel value="Id"/>
 					</f:facet>
-					<h:outputLabel value="#{tipoProducto.idTipoProducto}" />
+					<h:outputLabel value="#{producto.idProducto}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputLabel value="Nombre"/>
 					</f:facet>
-					<h:outputLabel value="#{tipoProducto.nombreTipoPro}" />
+					<h:outputLabel value="#{producto.nombreProducto}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputLabel value="Descripción"/>
 					</f:facet>
-					<h:outputLabel value="#{tipoProducto.descripcionTipoPro}" />
+					<h:outputLabel value="#{producto.descripcionProducto}" />
 				</h:column>
 			</h:dataTable>
 		</h:form>

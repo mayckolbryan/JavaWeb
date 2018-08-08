@@ -3,8 +3,12 @@
  */
 package com.mayckol.exampleweb.backingbean;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+
+import com.mayckol.exampleweb.modelo.TipoProducto;
 
 /**
  * @author laion
@@ -15,6 +19,7 @@ import javax.faces.bean.RequestScoped;
 public class TipoProductoBean {
 	private String nombreTipoProducto;
 	private String descripcionTipoProducto;
+	private List<TipoProducto> listaTipoProductos;
 	
 	private TipoProductoBean() {
 	}
@@ -35,6 +40,14 @@ public class TipoProductoBean {
 		this.descripcionTipoProducto = descripcionTipoProducto;
 	}
 	
+	public List<TipoProducto> getListaTipoProductos() {
+		return listaTipoProductos;
+	}
+
+	public void setListaTipoProductos(List<TipoProducto> listaTipoProductos) {
+		this.listaTipoProductos = listaTipoProductos;
+	}
+
 	public String guardarTipoProducto() {
 		return null;
 	}
