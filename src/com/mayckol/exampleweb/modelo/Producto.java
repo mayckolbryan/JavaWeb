@@ -15,6 +15,13 @@ public class Producto {
 	public Producto() {
 		
 	}
+	
+	public Producto(int idProducto, String nombreProducto, String descripcionProducto) {
+		super();
+		this.idProducto = idProducto;
+		this.nombreProducto = nombreProducto;
+		this.descripcionProducto = descripcionProducto;
+	}
 
 	public int getIdProducto() {
 		return idProducto;

@@ -19,17 +19,19 @@
 				<f:facet name="header">
 					<h:outputLabel value="Administracion Producto"></h:outputLabel>
 				</f:facet>				
-				<h:outputText value="Nombre: "></h:outputText>
-				<h:selectOneMenu>
+				<h:outputText value="Tipo Producto: "></h:outputText>
+				<h:selectOneMenu id="tipoProducto">
 					<f:selectItem itemLabel="Viveres" itemValue="1"/>
 					<f:selectItem itemLabel="Electrodomésticos" itemValue="2"/>
-					<f:selectItems itemValue="#{productoBean}"/>
+					<f:selectItems value="#{productoBean.listaTipoProductos}"/>
 				</h:selectOneMenu>
+				<%-- <h:message for="tipoProducto" /> --%>
 				<h:outputText value="Nombre: "></h:outputText>
-				<h:inputText id="txtNomCatalogo" value="#{productoBean.nombreProducto}"/>
+				<h:inputText id="txtNomCatalogo" value="#{productoBean.nombreProducto}" required="true" requiredMessage="El nombre es obligatorio."/>
 				<h:outputText value="Description: "></h:outputText>
 				<h:inputTextarea id="txtDescCatalogo" value="#{productoBean.descripcionProducto}"/>
 			</h:panelGrid>
+			<h:messages style="color:red;" />
 			<br>
 			<h:dataTable id="dtblTipoProducto" border="1" value="#{productoBean.listaProductos}" var="producto">
 				<f:facet name="header">
