@@ -4,6 +4,7 @@
 package com.mayckol.exampleweb.backingbean;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -25,6 +26,7 @@ public class ProductoBean {
 	private String descripcionProducto;
 	private List<Producto> listaProductos;
 	private List<SelectItem> listaTipoProductos;
+	private Date fechaCadPro;
 	
 	public void inicializar() {
 		this.listaProductos.add(new Producto(1, "Leche", "Duran bastante."));
@@ -80,6 +82,14 @@ public class ProductoBean {
 
 	public void setListaTipoProductos(List<SelectItem> listaTipoProductos) {
 		this.listaTipoProductos = listaTipoProductos;
+	}
+
+	public Date getFechaCadPro() {
+		return fechaCadPro;
+	}
+
+	public void setFechaCadPro(Date fechaCadPro) {
+		this.fechaCadPro = fechaCadPro;
 	}
 
 	public String guardarProducto() {

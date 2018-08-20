@@ -11,9 +11,9 @@
 	<f:view>
 		<h:form>
 			<h:panelGrid border="1" columns="3">
-				<h:commandButton value="Nuevo"></h:commandButton>
-				<h:commandButton value="Guardar" action="#{productoBean.guardarProducto}"></h:commandButton>
-				<h:commandButton value="Buscar"></h:commandButton>
+				<h:commandButton value="#{inter.btnNuevo}"></h:commandButton>
+				<h:commandButton value="#{inter.btnGuardar}" action="#{productoBean.guardarProducto}"></h:commandButton>
+				<h:commandButton value="#{inter.btnBuscar}"></h:commandButton>
 			</h:panelGrid>
 			<h:panelGrid border="1" columns="2">
 				<f:facet name="header">
@@ -27,9 +27,16 @@
 				</h:selectOneMenu>
 				<%-- <h:message for="tipoProducto" /> --%>
 				<h:outputText value="Nombre: "></h:outputText>
-				<h:inputText id="txtNomCatalogo" value="#{productoBean.nombreProducto}" required="true" requiredMessage="El nombre es obligatorio."/>
+				<h:inputText id="txtNomCatalogo" value="#{productoBean.nombreProducto}" required="true" 
+					requiredMessage="El nombre es obligatorio."	validatorMessage="#{inter.longitudNombre}">
+					<f:validateLength minimum="3" maximum="10" />
+				</h:inputText>
 				<h:outputText value="Description: "></h:outputText>
 				<h:inputTextarea id="txtDescCatalogo" value="#{productoBean.descripcionProducto}"/>
+				<h:outputText value="Fecha Caducidad: "></h:outputText>
+				<h:inputText id="txtFecCadPro" value="#{productoBean.fechaCadPro}" converterMessage="#{inter.fechaIncorrecta}">
+					<f:convertDateTime pattern="yyyy/MM/dd"/>
+				</h:inputText>
 			</h:panelGrid>
 			<h:messages style="color:red;" />
 			<br>
