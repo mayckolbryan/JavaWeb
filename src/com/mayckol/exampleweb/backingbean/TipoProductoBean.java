@@ -21,7 +21,7 @@ public class TipoProductoBean {
 	private String descripcionTipoProducto;
 	private List<TipoProducto> listaTipoProductos;
 	
-	private TipoProductoBean() {
+	public TipoProductoBean() {
 	}
 
 	public String getNombreTipoProducto() {

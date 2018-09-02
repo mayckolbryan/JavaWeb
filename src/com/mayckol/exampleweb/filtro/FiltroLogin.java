@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class FiltroLogin
  */
-@WebFilter(description = "Filtro para verificar el usuario", urlPatterns = { "/pages/*" })
+//@WebFilter(description = "Filtro para verificar el usuario", urlPatterns = { "/pages/*" })
 public class FiltroLogin implements Filter {
 
     /**
@@ -35,14 +35,14 @@ public class FiltroLogin implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest requestHttp = (HttpServletRequest)request;
-		HttpSession sesion = requestHttp.getSession();
-		
-		if (sesion.getAttribute("usuario") != null) {
-			chain.doFilter(request, response);
-		} else {
-			request.getRequestDispatcher("../../servletError?codigoError=103").forward(request, response);
-		}
+//		HttpServletRequest requestHttp = (HttpServletRequest)request;
+//		HttpSession sesion = requestHttp.getSession();
+//		
+//		if (sesion.getAttribute("usuario") != null) {
+//			chain.doFilter(request, response);
+//		} else {
+//			request.getRequestDispatcher("../../servletError?codigoError=103").forward(request, response);
+//		}
 	}
 
 	/**

@@ -20,10 +20,17 @@
 					<h:outputLabel value="Administracion Tipo Producto"></h:outputLabel>
 				</f:facet>
 				<h:outputText value="Nombre: "></h:outputText>
-				<h:inputText id="txtNomCatalogo" value="#{tipoProductoBean.nombreTipoProducto}"/>
+				<h:inputText id="txtNomCatalogo" value="#{tipoProductoBean.nombreTipoProducto}">
+					<f:validator validatorId="vldTamanio"/>
+				</h:inputText>
 				<h:outputText value="Description: "></h:outputText>
-				<h:inputTextarea id="txtDescCatalogo" value="#{tipoProductoBean.descripcionTipoProducto}"/>
+				<h:inputTextarea id="txtDescCatalogo" converter="cvtMayuscula" 
+					value="#{tipoProductoBean.descripcionTipoProducto}">
+					<%-- <f:converter converterId="cvtMayuscula"/> --%>
+				</h:inputTextarea>
 			</h:panelGrid>
+			<br>
+			<h:messages/>
 			<br>
 			<h:dataTable id="dtblTipoProducto" border="1" value="#{tipoProductoBean.listaTipoProductos}" var="tipoProducto">
 				<f:facet name="header">
