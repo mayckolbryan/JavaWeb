@@ -13,4 +13,21 @@
 			<var>inter</var>
 		</resource-bundle>
 	</application>
+	<navigation-rule>
+		<display-name>pages/menu</display-name>
+		<from-view-id>/pages/menu.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>producto</from-outcome>
+			<to-view-id>/pages/catalogo/producto.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>pages/menu</display-name>
+		<from-view-id>/pages/menu.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tipoProducto</from-outcome>
+			<to-view-id>/pages/catalogo/tipoProducto.jsp</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>
